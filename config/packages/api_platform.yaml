@@ -5,3 +5,9 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    title: 'API Lior Tuto'
+    description: 'API avec des clients -> factures relié à des utilisateurs.'
+    collection:
+        pagination:
+            enabled: false
+            items_per_page: 15

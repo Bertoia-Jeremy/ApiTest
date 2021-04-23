@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CustomerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class)
+ * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"firstName": "partial", "lastName", "company"})
  */
 class Customer
 {
@@ -22,7 +27,7 @@ class Customer
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $fisrtName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -59,14 +64,14 @@ class Customer
         return $this->id;
     }
 
-    public function getFisrtName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->fisrtName;
+        return $this->firstName;
     }
 
-    public function setFisrtName(string $fisrtName): self
+    public function setFirstName(string $firstName): self
     {
-        $this->fisrtName = $fisrtName;
+        $this->firstName = $firstName;
 
         return $this;
     }
