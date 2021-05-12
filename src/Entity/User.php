@@ -69,6 +69,11 @@ class User implements UserInterface
      */
     private $customers;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
+
     public function __construct()
     {
         $this->customers = new ArrayCollection();
@@ -205,6 +210,13 @@ class User implements UserInterface
                 $customer->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
