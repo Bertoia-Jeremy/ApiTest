@@ -99,9 +99,12 @@ class Invoice
      */
     private $chrono;
 
+    public function __construct(){
+        $this->sent_at = new \DateTime('now');
+    }
+
     /**
      * Permet de récupérer le User à qui appartient cette facture
-     * @Groups({"invoices_read"})
      * @return User
      */
     public function getUser() : User
